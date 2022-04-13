@@ -6,11 +6,15 @@ const CanvasHeight = 500;
 function setup(){
     createCanvas(CanvasWidth, CanvasHeight);
     PlayerPaddle = new PlayerCharachter(CanvasWidth/2, CanvasHeight);
+    Ball = new BallObject(250, 250, 15);
 }
+
 function draw(){
     background(220);
     PlayerPaddle.Update();
     PlayerPaddle.Draw();
+    Ball.Update();
+    Ball.Draw();
 }
 
 class PlayerCharachter{
@@ -64,5 +68,17 @@ class PlayerCharachter{
     }
 }
 
-}
+class BallObject{
+    constructor(x ,y, size){
+        this.X = x;
+        this.Y = x;
+        this.Size = size;
+        this.vector = createVector(-1, -1, 0)
+    }
 
+    Update(playerPaddle){
+    }
+
+    Draw(){
+        rect(this.X, this.Y, this.Size, this.Size);
+    }

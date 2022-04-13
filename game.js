@@ -1,10 +1,11 @@
 let PlayerPaddle;
-const canvasWidth = 500;
-const canvasHeight = 500;
+let Ball;
+const CanvasWidth = 500;
+const CanvasHeight = 500;
 
 function setup(){
-    createCanvas(canvasWidth, canvasHeight);
-    PlayerPaddle = new PlayerCharachter(canvasWidth/2, canvasHeight, 100);
+    createCanvas(CanvasWidth, CanvasHeight);
+    PlayerPaddle = new PlayerCharachter(CanvasWidth/2, CanvasHeight);
 }
 function draw(){
     background(220);

@@ -1,17 +1,24 @@
 class PlayerCharachter{
-    constructor(x, y, width = 100, height = 20, speed = 4){
+    constructor(x, y, width = 100, height = 25, speed = 4){
         this.Width = width;
         this.Height = height;
         this.Speed = speed;
 
-        // Recenter and adjust height
-        this.XLeft = x - (this.Width/2);
-        this.Y = y - this.Height - 5;
+        this.Position = createVector(x, y - height, 0);
+        
 
         Object.defineProperties(this, {
-            XRight: {
+            XLeftBound: {
                 get: function() {
-                    return this.XLeft + this.Width;
+                    return this.Position.x - (this.Width/2);
+                },
+                configurable: true
+            }
+        });   
+        Object.defineProperties(this, {
+            XRightBound: {
+                get: function() {
+                    return this.Position.x + (this.Width/2);
                 },
                 configurable: true
             }

@@ -14,29 +14,55 @@ function draw(){
 }
 
 class PlayerCharachter{
-    constructor(x, y, width, speed = 4){
+    constructor(x, y, width = 100, height = 20, speed = 4){
         this.Width = width;
-        this.Height = 20;
+        this.Height = height;
         this.Speed = speed;
 
-        this.X = x;
-        this.Y = y - this.Height -5;
+        // Recenter and adjust height
+        this.XLeft = x - (this.Width/2);
+        this.Y = y - this.Height - 5;
+
+        Object.defineProperties(this, {
+            XRight: {
+                get: function() {
+                    return this.XLeft + this.Width;
+                },
+                configurable: true
+            }
+        });   
+
     }
 
-    Update(){
+    Update(){      
         if(keyIsPressed){
+            //console.log("Moved");
             if(keyIsDown(LEFT_ARROW)){
-                this.X -= this.Speed;
+                this.XLeft -= this.Speed;
             }
             if(keyIsDown(RIGHT_ARROW)){
-                this.X += this.Speed;
+                this.XLeft += this.Speed;
             }
         }
+
+        this.DetectColisionWithSides();
     }
 
     Draw(){
-        rect(this.X, this.Y, 100, 20);
+        rect(this.XLeft, this.Y, 100, 20);
     }
+
+    DetectColisionWithSides(){
+        if(this.XLeft < 0) {
+            this.XLeft = 0;
+        }
+
+        if(this.XRight > CanvasWidth) 
+        {
+            this.XLeft = CanvasWidth - this.Width;  
+        }
+    }
+}
 
 }
 

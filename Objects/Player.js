@@ -27,13 +27,13 @@ class PlayerCharachter{
     }
 
     Update(){      
+        
         if(keyIsPressed){
-            //console.log("Moved");
             if(keyIsDown(LEFT_ARROW)){
-                this.XLeft -= this.Speed;
+                this.Position.x -= this.Speed;
             }
             if(keyIsDown(RIGHT_ARROW)){
-                this.XLeft += this.Speed;
+                this.Position.x += this.Speed;
             }
         }
 
@@ -41,17 +41,18 @@ class PlayerCharachter{
     }
 
     Draw(){
-        rect(this.XLeft, this.Y, 100, 20);
+        rect(this.XLeftBound, this.Position.y, this.Width, this.Height);
     }
 
+    
     DetectColisionWithSides(){
-        if(this.XLeft < 0) {
-            this.XLeft = 0;
+        if(this.Position.x < 0) {
+            this.Position.x = 0;
         }
 
-        if(this.XRight > CanvasWidth) 
+        if(this.Position.x > CanvasWidth) 
         {
-            this.XLeft = CanvasWidth - this.Width;  
+            this.Position.x = CanvasWidth;  
         }
     }
 }

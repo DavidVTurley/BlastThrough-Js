@@ -1,73 +1,103 @@
 class BallObject{
+    /**
+    * @description Places the center of the ball at position.
+    */
     constructor(x ,y, size){
-        this.X = x;
-        this.Y = x;
+        let middle = size/2;
+
         this.Size = size;
-        this.vector = createVector(-1, -1, 0)
+        this.Position = createVector(x - middle, y - middle, 0)
+        this.Direction = createVector(0, 1, 0);
+        this.Speed = 3;
+        this.Direction.mult(this.Speed);
+
+        Object.defineProperties(this, {
+            XLeftBound: {
+                get: function() {
+                    return this.Position.x - size/2;
+                },
+                set: function(value){
+                    this.Position.x += value;
+                },
+                configurable: true
+            }
+        });   
+        Object.defineProperties(this, {
+            XRightBound: {
+                get: function() {
+                    return this.Position.x + size/2;
+                },
+                set: function(value){
+                    this.Position.x += value;
+                },
+
+                configurable: true
+            }
+        });   
+        Object.defineProperties(this, {
+            YTopBound: {
+                get: function() {
+                    return this.Position.y - size/2;
+                },
+                set: function(value){
+                    this.Position.y += value;
+                },
+
+                configurable: true
+            }
+        });   
+        Object.defineProperties(this, {
+            YBottomBound: {
+                get: function() {
+                    return this.Position.y + size/2;
+                },
+                set: function(value){
+                    this.Position.y += value;
+                },
+
+                configurable: true
+            }
+        });   
+
     }
 
     Update(playerPaddle){
-        console.log(this.X + "  " + this.Y);
-        if(this.DetectCollision(playerPaddle)){
-            this.Y += this.vector.y;
-        }
+        this.DetectCollision(playerPaddle);
+        this.Position.add(this.Direction);
     }
 
     Draw(){
-        rect(this.X, this.Y, this.Size, this.Size);
+        rect(this.XLeftBound, this.YTopBound, this.Size, this.Size);
     }
 
     DetectCollision(player){
         // Walls
-        if(this.X < 0 ) {
-            this.X = 1;
-            this.WallCollision("Left");
-            console.log("Left");
+        if(this.XLeftBound < 0 ) {
+            this.Direction = InvertVectorX(this.Direction);
             return false;
         }
-        if(this.X > CanvasWidth ) {
-            this.X = CanvasWidth -1;
-            this.WallCollision("Right");
-            console.log("Right");
+        if(this.XRightBound > CanvasWidth ) {
+            this.Direction = InvertVectorX(this.Direction);
             return false;
         }
-        if(this.Y < 0 ) {
-            this.Y = 1;
-            this.WallCollision("Top");
-            console.log("Top");
+        if(this.YTopBound < 0 ) {
+            this.Direction = InvertVectorY(this.Direction);
             return false;
         }
-
+        if(this.YBottomBound > CanvasHeight){
+            this.Direction = createVector(0,0,0);  
+        }
         // Player
-        ////////////////////////// Add Player Colliusion ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-        ////////////////////////// HERE ///////////////  
-    }
-
-
-    WallCollision(wallPosition){
-        if(wallPosition == "Left"){
-            this.vector.x *= -1;
-        }
-        else if(wallPosition == "Right"){
-            this.vector.x *= -1;
-        }
-        else if(wallPosition == "Top"){
-            this.vector.y *= -1;
+        if(this.YTopBound >= player.Position.y
+            && this.YBottomBound >= player.Position.y
+            && this.XLeftBound >= player.XLeftBound
+            && this.XRightBound <= player.XRightBound){
+            this.Direction = InvertVectorY(GetNormalizedVectorFromObjects(this.Position, player.Position));
+            if(this.Direction.y <= -10) {
+                this.Direction.y = -10
+                console.log("Smaller than -5")
+            }
+            this.Direction.mult(this.Speed);
         }
     }
 }

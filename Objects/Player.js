@@ -1,30 +1,8 @@
-class PlayerCharachter{
-    constructor(x, y, width = 100, height = 25, speed = 4){
-        this.Width = width;
-        this.Height = height;
+class Player extends GameObject{
+    constructor(position, width, height, speed, hasHitBox = true, shapeType = "Square"){
+        super(position, width, height, hasHitBox, shapeType);
         this.Speed = speed;
-
-        this.Position = createVector(x, y - height, 0);
-        
-
-        Object.defineProperties(this, {
-            XLeftBound: {
-                get: function() {
-                    return this.Position.x - (this.Width/2);
-                },
-                configurable: true
-            }
-        });   
-        Object.defineProperties(this, {
-            XRightBound: {
-                get: function() {
-                    return this.Position.x + (this.Width/2);
-                },
-                configurable: true
-            }
-        });   
-
-    }
+    }     
 
     Update(){      
         
@@ -41,7 +19,7 @@ class PlayerCharachter{
     }
 
     Draw(){
-        rect(this.XLeftBound, this.Position.y, this.Width, this.Height);
+        this.DrawSelfSquare();
     }
 
     

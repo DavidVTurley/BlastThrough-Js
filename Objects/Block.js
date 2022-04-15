@@ -1,24 +1,19 @@
-class Block{
-    constructor(x ,y, width, height){
-        this.Shape = new Rectangle(x, y, 0, width, height);
+class Block extends GameObject{
+    constructor(position, width, height){
+        super(position, width, height, true, "square");
+        this.Visible = true;
     }
 
-    Update(playerPaddle){
-
+    Update(){
+        
     }
 
     Draw(){
-        this.Shape.Draw();
+        if(this.Visible){
+            this.DrawSelfSquare();
+        }
     }
 
-    DetectHitWithBall(balls){
-        balls.forEach(ball => {
-            if(
-                
-            ){
-                
-            }
-        });
-    }
+
 
 }

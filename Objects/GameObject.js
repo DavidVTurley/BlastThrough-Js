@@ -1,10 +1,14 @@
 class GameObject{
-    constructor(position, width, height, hasHitBox = true, shapeType = "square"){
+    constructor(position, width, height, hasHitBox = true, shapeType = "square", direction = createVector(0,0,0), initialSpeed = 0){
         this.Position = position;
         this.Width = width;
         this.Height = height;
         this.HitBox = hasHitBox;
         this.shapeType = shapeType
+        this.Speed = initialSpeed;
+        this.Direction = direction;
+
+        this.Direction.mult(this.Speed);
         Object.defineProperties(this, {
             Top: {
                 get: function() {

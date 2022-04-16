@@ -7,7 +7,7 @@ const CanvasHeight = 500;
 function setup(){
     createCanvas(CanvasWidth, CanvasHeight);
     PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true, "square");
-    Ball = new BallObject(createVector(250, 250, 0), 15,3 );
+    Ball = new BallObject(createVector(250, 300, 0), 15, 3);
     Tile = [];
     for(let y = 1; y <= 10; y++){
         Tile.push([]);

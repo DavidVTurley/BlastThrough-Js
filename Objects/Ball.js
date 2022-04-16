@@ -3,11 +3,7 @@ class BallObject extends GameObject{
     * @description Places the center of the ball at position.
     */
     constructor(position, size, initialSpeed){
-        super(position, size, size, true, "square");
-        
-        this.Direction = createVector(0, 1, 0);
-        this.Speed = initialSpeed;
-        this.Direction.mult(this.Speed);
+        super(position, size, size, true, "square", createVector(0, 1, 0), initialSpeed);
     }
 
     Update(player){

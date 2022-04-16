@@ -8,9 +8,13 @@ class BallObject extends GameObject{
 
     Update(player){
         if(this.CheckCollision(player)){
-            this.Bottom = player.Top + 1;
+            this.Bottom = player.Top + -1;
             let newDirection = GetVectorToObject(player.Position, this.Position).normalize();
-            this.Direction = createVector(newDirection.x * this.Speed, newDirection.y * this.Speed, newDirection.z * this.Speed);
+            newDirection = createVector(newDirection.x * this.Speed, newDirection.y * this.Speed, newDirection.z * this.Speed);
+            if(newDirection.y > -0.5){
+                newDirection.y = -0.5 * this.Speed;
+            }
+            this.Direction = newDirection;
         }
         this.DetectWallCollision();
         this.Position.add(this.Direction);

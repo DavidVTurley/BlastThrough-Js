@@ -23,15 +23,38 @@ function draw(){
     for(let y = 0; y < Tile.length; y++){
         for(let x = 0; x < Tile[y].length; x ++){
             Tile[y][x].Update(Ball);
-            Tile[y][x].Draw();
             if(Ball.DetectCollisionWithTile(Tile[y][x])){
                 Tile[y][x].Visible = false;
                 Tile[y][x].HitBox = false;
                 if(!tileHit){
-                    Ball.Bottom = Tile[y][x].Bottom;
-                    Ball.Direction = InvertVectorY(Ball.Direction); 
+                    let angleToObject = GetAngleToObject(Tile[y][x].Position, Ball.Position);
+                    console.log(angleToObject);
+                    // bottom
+                    if(angleToObject <= -45 && angleToObject >= -135){
+                        Ball.Direction = InvertVectorY(Ball.Direction);
+                        console.log("Bottom");
+                    }      
+                    // top
+                    else if(angleToObject <= 135 && angleToObject >= 45){
+                        Ball.Direction = InvertVectorY(Ball.Direction);
+                        console.log("top");
+                    }                                  
+                    // Left
+                    else if(angleToObject <= -135 && angleToObject >= -175
+                        || angleToObject >= 135 && angleToObject <= 180){
+                        Ball.Direction = InvertVectorX(Ball.Direction);
+                        console.log("Left");
+                    }
+                    // right
+                    else if(angleToObject <= 45 && angleToObject >= -45){
+                        Ball.Direction = InvertVectorX(Ball.Direction);
+                        console.log("right");
+                    }
+                    tileHit = true;
                 }
             }
+
+            Tile[y][x].Draw();
         }
     } 
     PlayerPaddle.Update();

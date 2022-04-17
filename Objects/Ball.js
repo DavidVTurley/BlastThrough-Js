@@ -1,6 +1,6 @@
-class BallObject extends GameObject{
+class thisObject extends GameObject{
     /**
-    * @description Places the center of the ball at position.
+    * @description Places the center of the this at position.
     */
     constructor(position, size, initialSpeed){
         super(position, size, size, true, "square", createVector(0, 1, 0), initialSpeed);
@@ -25,7 +25,31 @@ class BallObject extends GameObject{
     }
 
     DetectCollisionWithTile(tile){
-        return this.CheckCollision(tile);
+        if(!this.CheckCollision(tile)) return false;
+        let angleToObject = GetAngleToObject(Tile.Position, this.Position);
+        // bottom
+        if(angleToObject <= -45 && angleToObject >= -135){
+            this.Direction = InvertVectorY(this.Direction);
+            //console.log("Bottom");
+        }      
+        // top
+        else if(angleToObject <= 135 && angleToObject >= 45){
+            this.Direction = InvertVectorY(this.Direction);
+            //console.log("top");
+        }                                  
+        // Left
+        else if(angleToObject <= -135 && angleToObject >= -175
+            || angleToObject >= 135 && angleToObject <= 180){
+            this.Direction = InvertVectorX(this.Direction);
+            //console.log("Left");
+        }
+        // right
+        else if(angleToObject <= 45 && angleToObject >= -45){
+            this.Direction = InvertVectorX(this.Direction);
+            //console.log("right");
+        }
+
+        return true;
     }
     DetectWallCollision(){
         // Walls

@@ -1,4 +1,4 @@
-class BallObject extends GameObject{
+class thisObject extends GameObject{
     /**
     * @description Places the center of the this at position.
     */

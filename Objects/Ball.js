@@ -1,4 +1,4 @@
-class thisObject extends GameObject{
+class BallObject extends GameObject{
     /**
     * @description Places the center of the this at position.
     */
@@ -26,7 +26,7 @@ class thisObject extends GameObject{
 
     DetectCollisionWithTile(tile){
         if(!this.CheckCollision(tile)) return false;
-        let angleToObject = GetAngleToObject(Tile.Position, this.Position);
+        let angleToObject = GetAngleToObject(tile.Position, this.Position);
         // bottom
         if(angleToObject <= -45 && angleToObject >= -135){
             this.Direction = InvertVectorY(this.Direction);

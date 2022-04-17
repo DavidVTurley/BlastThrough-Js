@@ -2,11 +2,15 @@ class Player extends GameObject{
     constructor(position, width, height, speed, hasHitBox = true, shapeType = "Square"){
         super(position, width, height, hasHitBox, shapeType);
         this.Speed = speed;
+        this.MousePosX = 0;
     }     
 
     Update(){      
-        
-        if(keyIsPressed){
+        if(this.MousePosX != mouseX){
+            this.Position.x = mouseX;
+            this.MousePosX = mouseX;
+        }
+        else if(keyIsPressed){
             if(keyIsDown(LEFT_ARROW)){
                 this.Position.x -= this.Speed;
             }

@@ -31,7 +31,6 @@ class Player extends GameObject{
         if(this.Position.x < 0) {
             this.Position.x = 0;
         }
-
         if(this.Position.x > CanvasWidth) 
         {
             this.Position.x = CanvasWidth;  

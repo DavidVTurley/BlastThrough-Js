@@ -2,10 +2,11 @@ function GetVectorToObject(from, to){
     return createVector(to.x - from.x, to.y - from.y, to.z - from.z);
 }
 
-
+/**
+* @description Left = 180, Top = 90, left = 0, bottom = -90  
+*/
 function GetAngleToObject(from, to){
     return (Math.atan2(to.y - from.y, to.x - from.x) * 180 / Math.PI) * -1;
-
     //               Angle returned as:
     //                      90
     //            135                45

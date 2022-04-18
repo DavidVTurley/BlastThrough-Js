@@ -18,6 +18,23 @@ function GetAngleToObject(from, to){
     //                     -90
 }
 
+function GetSideOfObjectFromAngle(angle){
+    switch (angle) {
+        case angle > 45 && angle < 135:
+            return "Top";
+        case angle > -45 && angle < 45:
+            return "Right";
+        case angle > -135 && angle < -45:
+            return "Bottom";
+        case angle <= -180 && angle > -135
+        || angle > 135 && angle < 180:
+            return "Left";
+    
+        default:
+            return undefined;
+    }
+}
+
 function InvertVectorX(vector){
     vector.x *= -1;
     return vector;

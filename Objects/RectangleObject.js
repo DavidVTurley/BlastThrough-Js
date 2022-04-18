@@ -15,16 +15,20 @@ class RectangleObject extends GameObject{
 
     DetectColisionWithSides(){
         if(this.Left <= 0) {
+            console.log("Left");
             return "Left";
         }
         if(this.Right > CanvasWidth) 
         {
+            console.log("Right");
             return "Right";
         }
         if(this.Top <= 0){
+            console.log("Top");
             return "Top";
         }
         if(this.Bottom <= 0){
+            console.log("Bottom");
             return "Bottom";
         }
     }

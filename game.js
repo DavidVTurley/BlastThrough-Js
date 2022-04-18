@@ -24,10 +24,7 @@ function draw(){
         for(let x = 0; x < Tile[y].length; x ++){
             theTile = Tile[y][x];
             if(Ball.CheckCollision(theTile)){
-                theTile.Visible = false;
-                theTile.HitBox = false;
                 Ball.RespondCollisionWithTile(theTile);
-                tileHit = true;
             }
 
             theTile.Draw();

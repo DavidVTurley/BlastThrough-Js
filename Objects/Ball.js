@@ -31,38 +31,50 @@ class BallObject extends RectangleObject{
 
     RespondCollisionWithTile(tile){
         let angleToObject = GetAngleToObject(tile.Position, this.Position);
-        if(!this.BouncedY){
-            // bottom
-            if(angleToObject <= -45 && angleToObject >= -135){
-                this.Direction = InvertVectorY(this.Direction);
-            }      
-            // top
-            else if(angleToObject <= 135 && angleToObject >= 45){
-                this.Direction = InvertVectorY(this.Direction);
-            }                  
-        }
-        if(!this.BouncedX){                
-            // Left
-            if(angleToObject <= -135 && angleToObject >= -175
-                || angleToObject >= 135 && angleToObject <= 180){
-                this.Direction = InvertVectorX(this.Direction);
+        if(tile.HitBox){
+            tile.Visible = false;
+            tile.HitBox = false;
+            
+            if(!this.BouncedY){
+                // bottom
+                if(angleToObject <= -45 && angleToObject >= -135){
+                    this.Direction = InvertVectorY(this.Direction);
+                }      
+                // top
+                else if(angleToObject <= 135 && angleToObject >= 45){
+                    this.Direction = InvertVectorY(this.Direction);
+                }    
+                this.BouncedY = true;             
             }
-            // right
-            else if(angleToObject <= 45 && angleToObject >= -45){
-                this.Direction = InvertVectorX(this.Direction);
+            if(!this.BouncedX){                
+                // Left
+                if(angleToObject <= -135 && angleToObject >= -175
+                    || angleToObject >= 135 && angleToObject <= 180){
+                    this.Direction = InvertVectorX(this.Direction);
+                }
+                // right
+                else if(angleToObject <= 45 && angleToObject >= -45){
+                    this.Direction = InvertVectorX(this.Direction);
+                }
+                this.BouncedX = true;
             }
         }
     }
 
     RespondCollisionWithSides(side){
+        console.log(side);
         switch (side) {
-            case "Left" || "Right":
+            case "Left":
+                this.Direction = InvertVectorX(this.Direction);
+                break;
+            case "Right":
                 this.Direction = InvertVectorX(this.Direction);
                 break;
             case "Top":
                 this.Direction = InvertVectorY(this.Direction);
                 break;
             case "Bottom":
+                console.log("Bottom");
                 this.Direction = createVector(0,0,0);  
                 break;
             default:

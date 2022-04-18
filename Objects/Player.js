@@ -21,13 +21,11 @@ class Player extends RectangleObject{
 
         switch (this.DetectColisionWithSides()) {
             case "Left":
-                this.Position.x = 1;
-
+                this.Position.x = 0;
                 break;
         
             case "Right":
-                this.Position.x = CanvasWidth-1;
-
+                this.Position.x = CanvasWidth;
                 break;
         
             default:
@@ -37,5 +35,17 @@ class Player extends RectangleObject{
 
     Draw(){
         super.Draw();
+    }
+
+    DetectColisionWithSides(){
+        if(this.Position.x < 0) {
+            console.log("Left");
+            return "Left";
+        }
+        else if(this.Position.x > CanvasWidth) 
+        {
+            console.log("Right");
+            return "Right";
+        }
     }
 }

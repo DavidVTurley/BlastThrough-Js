@@ -5,15 +5,15 @@ const CanvasWidth = 500;
 const CanvasHeight = 500;
 
 function setup(){
-    frameRate(30)
+    //frameRate(30)
     createCanvas(CanvasWidth, CanvasHeight);
     PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true);
     Ball = new BallObject(createVector(250, 300, 0), 15, 3);
     Tile = [];
     for(let y = 1; y <= 10; y++){
         Tile.push([]);
-        for(let x = 1; x <= CanvasWidth / 21; x ++){
-            Tile[y-1].push(new Block(createVector(20*x + 1*x, 20*y + 5*y), 20, 20));
+        for(let x = 1; x <= 10; x ++){
+            Tile[y-1].push(new Block(createVector(40*x + 4 + 20, 20*y), 40, 20));
         }
     }
 }

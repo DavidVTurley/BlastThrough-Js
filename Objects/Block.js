@@ -1,7 +1,6 @@
-class Block extends GameObject{
+class Block extends RectangleObject{
     constructor(position, width, height){
-        super(position, width, height, true, "square");
-        this.Visible = true;
+        super(position, width, height, true);
     }
 
     Update(){
@@ -10,7 +9,7 @@ class Block extends GameObject{
 
     Draw(){
         if(this.Visible){
-            this.DrawSelfSquare();
+            super.Draw();
         }
     }
 

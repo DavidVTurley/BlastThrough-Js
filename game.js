@@ -5,8 +5,9 @@ const CanvasWidth = 500;
 const CanvasHeight = 500;
 
 function setup(){
+    frameRate(30)
     createCanvas(CanvasWidth, CanvasHeight);
-    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true, "square");
+    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true);
     Ball = new BallObject(createVector(250, 300, 0), 15, 3);
     Tile = [];
     for(let y = 1; y <= 10; y++){
@@ -19,18 +20,14 @@ function setup(){
 
 function draw(){
     background(220);
-    let tileHit = false;
     for(let y = 0; y < Tile.length; y++){
         for(let x = 0; x < Tile[y].length; x ++){
             theTile = Tile[y][x];
-            theTile.Update(Ball);
-            if(Ball.DetectCollisionWithTile(theTile)){
+            if(Ball.CheckCollision(theTile)){
                 theTile.Visible = false;
                 theTile.HitBox = false;
-                if(!tileHit){
-                    Ball.DetectCollisionWithTile(theTile);
-                    tileHit = true;
-                }
+                Ball.RespondCollisionWithTile(theTile);
+                tileHit = true;
             }
 
             theTile.Draw();

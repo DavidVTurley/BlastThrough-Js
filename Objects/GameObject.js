@@ -1,14 +1,18 @@
 class GameObject{
-    constructor(position, width, height, hasHitBox = true, shapeType = "square", direction = createVector(0,0,0), initialSpeed = 0){
+    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true){
+        if(this.constructor === GameObject) {
+            throw new Error("GameObject is an abstract class.");
+        }
+
         this.Position = position;
         this.Width = width;
         this.Height = height;
         this.HitBox = hasHitBox;
-        this.shapeType = shapeType
         this.Speed = initialSpeed;
         this.Direction = direction;
-
+        this.Visible = visible;
         this.Direction.mult(this.Speed);
+        
         Object.defineProperties(this, {
             Top: {
                 get: function() {
@@ -20,7 +24,6 @@ class GameObject{
                 configurable: true
             }
         });   
-
         Object.defineProperties(this, {
             Bottom: {
                 get: function() {
@@ -32,7 +35,6 @@ class GameObject{
                 configurable: true
             }
         });   
-
         Object.defineProperties(this, {
             Left: {
                 get: function() {
@@ -44,7 +46,6 @@ class GameObject{
                 configurable: true
             }
         });   
-
         Object.defineProperties(this, {
             Right: {
                 get: function() {
@@ -60,29 +61,11 @@ class GameObject{
     }
 
     CheckCollision(gameObject){
-        if(this.HitBox == false || gameObject.HitBox == false){
-            return false;
-        }
-        if(this.shapeType == "square"){
-            if(gameObject.shapeType == "square"){
-
-                return this.Left <= gameObject.Right
-                && this.Right >= gameObject.Left
-                && this.Top <= gameObject.Bottom
-                && this.Bottom >= gameObject.Top;
-            }
-            else if(gameObject.shapeType == "elipse"){
-                console.log("Square to Elipse collision not implemented yet");
-                return false;
-            }
-        }
-        else if(this.shapeType = "elipse"){
-            console.log("Elipse to elips collision not implemented yet");
-        }
+        if(this.HitBox == false || gameObject.HitBox == false) return false;
     }
 
-    DrawSelfSquare(){
-        rect(this.Position.x - (this.Width/2), this.Position.y - (this.Height/2), this.Width, this.Height);
+    Draw(){
+        
     }
 }
 

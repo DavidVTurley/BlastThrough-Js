@@ -1,6 +1,6 @@
-class Player extends GameObject{
-    constructor(position, width, height, speed, hasHitBox = true, shapeType = "Square"){
-        super(position, width, height, hasHitBox, shapeType);
+class Player extends RectangleObject{
+    constructor(position, width, height, speed, hasHitBox = true,){
+        super(position, width, height, hasHitBox);
         this.Speed = speed;
         this.MousePosX = 0;
     }     
@@ -19,21 +19,23 @@ class Player extends GameObject{
             }
         }
 
-        this.DetectColisionWithSides();
+        switch (this.DetectColisionWithSides()) {
+            case "Left":
+                this.Position.x = 1;
+
+                break;
+        
+            case "Right":
+                this.Position.x = CanvasWidth-1;
+
+                break;
+        
+            default:
+                break;
+        }
     }
 
     Draw(){
-        this.DrawSelfSquare();
-    }
-
-    
-    DetectColisionWithSides(){
-        if(this.Position.x < 0) {
-            this.Position.x = 0;
-        }
-        if(this.Position.x > CanvasWidth) 
-        {
-            this.Position.x = CanvasWidth;  
-        }
+        super.Draw();
     }
 }

@@ -30,8 +30,8 @@ class BallObject extends RectangleObject{
     }
 
     RespondCollisionWithTile(tile){
-        let angleToObject = GetAngleToObject(tile.Position, this.Position);
         if(tile.HitBox){
+            let angleToObject = GetAngleToObject(this.Position, tile.Position);
             tile.Visible = false;
             tile.HitBox = false;
             
@@ -48,7 +48,7 @@ class BallObject extends RectangleObject{
             }
             if(!this.BouncedX){                
                 // Left
-                if(angleToObject <= -135 && angleToObject >= -175
+                if(angleToObject <= -135 && angleToObject >= -180
                     || angleToObject >= 135 && angleToObject <= 180){
                     this.Direction = InvertVectorX(this.Direction);
                 }

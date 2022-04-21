@@ -8,11 +8,20 @@ class BallObject extends RectangleObject{
         this.BouncedY = false;
     }
 
-    Update(player){
+    Update(powerups, player, tiles){
         this.BouncedX = false;
         this.BouncedY = false;
-        
-        this.RespondCollisionWithSides(this.DetectColisionWithSides());
+        for(let y = 0; y < tiles.length; y++){
+            for(let x = 0; x < tiles[y].length; x ++){
+                let theTile = tiles[y][x];
+                if(this.CheckCollision(theTile)){
+                    this.RespondCollisionWithTile(theTile);
+                }
+            }
+        } 
+    
+
+        this.RespondCollisionWitgSidesOfCanvas(this.DetectCollisionWithSideOfCanvasDirection());
         if(this.CheckCollision(player)){
             this.Bottom = player.Top + -1;
             let newDirection = GetVectorToObject(player.Position, this.Position).normalize();

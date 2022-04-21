@@ -60,25 +60,4 @@ class BallObject extends RectangleObject{
             }
         }
     }
-
-    RespondCollisionWithSides(side){
-        console.log(side);
-        switch (side) {
-            case "Left":
-                this.Direction = InvertVectorX(this.Direction);
-                break;
-            case "Right":
-                this.Direction = InvertVectorX(this.Direction);
-                break;
-            case "Top":
-                this.Direction = InvertVectorY(this.Direction);
-                break;
-            case "Bottom":
-                console.log("Bottom");
-                this.Direction = createVector(0,0,0);  
-                break;
-            default:
-                break;
-        }
-    }
 }

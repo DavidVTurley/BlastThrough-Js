@@ -15,6 +15,10 @@ class BallObject extends RectangleObject{
             for(let x = 0; x < tiles[y].length; x ++){
                 let theTile = tiles[y][x];
                 if(this.CheckCollision(theTile)){
+                    if(theTile.HitBox && random(0, 15) > 14) {
+                        powerups.push(new PowerUp(CopyVector(theTile.Position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true));
+                        console.log("PowerupCreated")
+                    }
                     this.RespondCollisionWithTile(theTile);
                 }
             }

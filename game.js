@@ -32,9 +32,10 @@ function draw(){
             theTile.Draw();
         }
     } 
-    PlayerPaddle.Update();
-    PlayerPaddle.Draw();
-    Ball.Update(PlayerPaddle);
-    Ball.Draw();
-
+    PowerUps.filter(x => x != null && !x.CleanUp).forEach(pu => {
+        pu.Move();
+        
+        pu.Update(PlayerPaddle);
+        pu.Draw();    
+    });
 }

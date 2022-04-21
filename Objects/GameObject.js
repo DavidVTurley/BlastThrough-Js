@@ -64,6 +64,14 @@ class GameObject{
         if(this.HitBox == false || gameObject.HitBox == false) return false;
     }
 
+    Move(){
+        
+    }
+
+    Update (){
+
+    }
+
     Draw(){
         
     }

@@ -24,23 +24,48 @@ class RectangleObject extends GameObject{
             && this.Bottom >= gameObject.Top;
     }
 
-    DetectColisionWithSides(){
+    DetectColisionWithSidesOfCanvas(){
+        return this.Left <= 0 || this.Right > CanvasWidth || this.Top <= 0 || this.Bottom <= 0;
+    }
+
+    DetectCollisionWithSideOfCanvasDirection(){
         if(this.Left <= 0) {
-            console.log("Left");
+            //console.log("Left");
             return "Left";
         }
-        if(this.Right > CanvasWidth) 
-        {
-            console.log("Right");
+        if(this.Right > CanvasWidth) {
+            //console.log("Right");
             return "Right";
         }
         if(this.Top <= 0){
-            console.log("Top");
+           // console.log("Top");
             return "Top";
         }
         if(this.Bottom <= 0){
-            console.log("Bottom");
+            //console.log("Bottom");
             return "Bottom";
         }
+        return "None";
     }
+
+    RespondCollisionWitgSidesOfCanvas(side){
+        switch (side) {
+            case "Left":
+                this.Direction = InvertVectorX(this.Direction);
+                break;
+            case "Right":
+                this.Direction = InvertVectorX(this.Direction);
+                break;
+            case "Top":
+                this.Direction = InvertVectorY(this.Direction);
+                break;
+            case "Bottom":
+                console.log("Bottom");
+                this.Direction = createVector(0,0,0);  
+                break;
+            default:
+                break;
+        }
+    }
+
 }

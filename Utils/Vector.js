@@ -35,6 +35,9 @@ function GetSideOfObjectFromAngle(angle){
     }
 }
 
+function CopyVector(vectorToCopy){
+    return createVector(vectorToCopy.x, vectorToCopy.y, vectorToCopy.z);
+}
 function InvertVectorX(vector){
     vector.x *= -1;
     return vector;
@@ -43,4 +46,14 @@ function InvertVectorX(vector){
 function InvertVectorY(vector){
     vector.y *= -1;
     return vector;
+}
+
+function AddVectorTogether(v, toAdd){
+    console.log(toAdd)
+    v.x += toAdd.x;
+    v.y += toAdd.y;
+    v.z += toAdd.z;
+    
+    console.log(toAdd)
+    return v;
 }

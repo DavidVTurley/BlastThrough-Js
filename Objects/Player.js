@@ -19,7 +19,7 @@ class Player extends RectangleObject{
             }
         }
 
-        switch (this.DetectColisionWithSides()) {
+        switch (this.DetectColisionWithSidesOfCanvas()) {
             case "Left":
                 this.Position.x = 0;
                 break;
@@ -37,7 +37,7 @@ class Player extends RectangleObject{
         super.Draw();
     }
 
-    DetectColisionWithSides(){
+    DetectColisionWithSidesOfCanvas(){
         if(this.Position.x < 0) {
             console.log("Left");
             return "Left";

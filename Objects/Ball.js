@@ -2,8 +2,8 @@ class BallObject extends RectangleObject{
     /**
     * @description Places the center of the this at position.
     */
-    constructor(position, size, initialSpeed){
-        super(position, size, size, true, createVector(0, 1, 0), initialSpeed);
+    constructor(position, size, initialSpeed, Colour){
+        super(position, size, size, true, createVector(0, 1, 0), initialSpeed, Colour = undefined);
         this.BouncedX = false;
         this.BouncedY = false;
     }

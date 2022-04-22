@@ -1,6 +1,6 @@
 class Block extends RectangleObject{
-    constructor(position, width, height){
-        super(position, width, height, true);
+    constructor(position, width, height, Colour = undefined){
+        super(position, width, height, true, Colour);
     }
 
     Update(){

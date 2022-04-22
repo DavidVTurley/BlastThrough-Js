@@ -1,6 +1,6 @@
 class Player extends RectangleObject{
-    constructor(position, width, height, speed, hasHitBox = true,){
-        super(position, width, height, hasHitBox);
+    constructor(position, width, height, speed, hasHitBox = true, Colour = undefined){
+        super(position, width, height, hasHitBox, Colour);
         this.Speed = speed;
         this.MousePosX = 0;
     }     

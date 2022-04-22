@@ -1,5 +1,5 @@
 class GameObject{
-    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true){
+    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, colour){
         if(this.constructor === GameObject) {
             throw new Error("GameObject is an abstract class.");
         }
@@ -12,6 +12,8 @@ class GameObject{
         this.Direction = direction;
         this.Visible = visible;
         this.Direction.mult(this.Speed);
+        if(colour == undefined) this.Colour = color(0,0,0);
+        else  this.Colour = colour;
         
         Object.defineProperties(this, {
             Top: {

@@ -9,7 +9,7 @@ class RectangleObject extends GameObject{
 
     Draw(){
         if(this.Visible){
-            rect(this.Left, this.Top, this.Width, this.Height);
+            DrawRectangleFromGameObject(this, color(255, 255, 255), true);
         }
     }
 

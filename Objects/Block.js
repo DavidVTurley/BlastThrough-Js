@@ -9,7 +9,7 @@ class Block extends RectangleObject{
 
     Draw(){
         if(this.Visible){
-            super.Draw();
+            DrawRectangleFromGameObject(this, color(220, 0, 0))
         }
     }
 

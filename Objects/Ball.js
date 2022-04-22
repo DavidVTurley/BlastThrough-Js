@@ -39,7 +39,9 @@ class BallObject extends RectangleObject{
     }
 
     Draw(){
-        super.Draw();
+        if(this.Visible){
+            DrawRectangleFromGameObject(this, color(255, 255, 255));
+        }
     }
 
     RespondCollisionWithTile(tile){

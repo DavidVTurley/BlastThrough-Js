@@ -12,7 +12,7 @@ class GameObject{
         this.Direction = direction;
         this.Visible = visible;
         this.Direction.mult(this.Speed);
-        if(colour == undefined) this.Colour = color(0,0,0);
+        if(colour == undefined) this.Colour = Colours.Black;
         else  this.Colour = colour;
         
         Object.defineProperties(this, {

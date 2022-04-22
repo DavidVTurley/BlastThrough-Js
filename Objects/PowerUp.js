@@ -33,11 +33,11 @@ class PowerUp extends RectangleObject{
     Draw(){
         switch (this.PowerUpType) {
             case "SizeUp": 
-                DrawRectangleFromGameObject(this, color(0, 255, 70), true)
+                DrawRectangleFromGameObject(this, Colours.Green, true)
                 break;
 
             case "SizeDown": 
-                DrawRectangleFromGameObject(this, color(255,0,0), true);
+                DrawRectangleFromGameObject(this, Colours.Red, true);
                 break;
 
             case "SizeUp": 

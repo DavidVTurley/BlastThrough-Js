@@ -1,5 +1,7 @@
 class RectangleObject extends GameObject{
     constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, colour = undefined){
+        console.log(colour)
+
         super(position, width, height, hasHitBox, direction, initialSpeed, visible, colour);
     }
 
@@ -9,7 +11,7 @@ class RectangleObject extends GameObject{
 
     Draw(){
         if(this.Visible){
-            DrawRectangleFromGameObject(this, color(255, 255, 255), true);
+            DrawRectangleFromGameObject(this, true);
         }
     }
 

@@ -10,8 +10,9 @@ class GameObject{
         this.HitBox = hasHitBox;
         this.Speed = initialSpeed;
         this.Direction = direction;
-        this.Visible = visible;
         this.Direction.mult(this.Speed);
+        this.Visible = visible;
+        console.log(colour)
         if(colour == undefined) this.Colour = Colours.Black;
         else  this.Colour = colour;
         

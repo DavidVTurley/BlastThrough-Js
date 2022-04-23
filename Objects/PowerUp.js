@@ -10,49 +10,49 @@ class PowerUp extends RectangleObject{
         let r = random(0, 6);
         if(r < 4){
             console.log("PowerupCreated")
-            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true);
+            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true, Colours.Green);
         }
         if(r < 6){
             console.log("PowerupCreated")
-            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeDown", true);
+            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeDown", true, Colours.Red);
         }
         if(r < 4){
             console.log("PowerupCreated")
-            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true);
+            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true, Colours.Green);
         }
         if(r < 4){
             console.log("PowerupCreated")
-            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true);
+            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true, Colours.Green);
         }
         if(r < 4){
             console.log("PowerupCreated")
-            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true);
+            return new PowerUp(CopyVector(position), 40, 20, true, createVector(0, 1, 0), 2, "SizeUp", true, Colours.Green);
         }
     }
 
     Draw(){
         switch (this.PowerUpType) {
             case "SizeUp": 
-                DrawRectangleFromGameObject(this, Colours.Green, true)
+                DrawRectangleFromGameObject(this, this.Colour, true)
                 break;
 
             case "SizeDown": 
-                DrawRectangleFromGameObject(this, Colours.Red, true);
+                DrawRectangleFromGameObject(this, this.Colour, true);
                 break;
 
             case "SizeUp": 
-                DrawRectangleFromGameObject(this, color(0, 255, 70), true);
+                DrawRectangleFromGameObject(this, this.Colour, true);
                 break;
 
             case "SizeUp": 
-                DrawRectangleFromGameObject(this, color(0, 255, 70), true);
+                DrawRectangleFromGameObject(this, this.Colour, true);
                 break;
 
             case "SizeUp": 
-                DrawRectangleFromGameObject(this, color(0, 255, 70), true);
+                DrawRectangleFromGameObject(this, this.Colour, true);
                 break;
             default:
-                DrawRectangle(this, color(255, 255, 255))
+                DrawRectangle(this, this.Colour)
                 break;
         }
 

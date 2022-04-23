@@ -1,18 +1,5 @@
 class Block extends RectangleObject{
     constructor(position, width, height, colour = undefined){
-        super(position, width, height, true, colour);
+        super(position, width, height, true, createVector(0, 0, 0), 0, true, colour = colour);
     }
-
-    Update(){
-        
-    }
-
-    Draw(){
-        if(this.Visible){
-            DrawRectangleFromGameObject(this, Colours.Red)
-        }
-    }
-
-
-
 }

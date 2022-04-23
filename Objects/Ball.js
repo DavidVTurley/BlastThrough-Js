@@ -2,10 +2,11 @@ class BallObject extends RectangleObject{
     /**
     * @description Places the center of the this at position.
     */
-    constructor(position, size, initialSpeed, Colour){
-        super(position, size, size, true, createVector(0, 1, 0), initialSpeed, Colour = undefined);
+    constructor(position, size, initialSpeed, colour = undefined){
+        super(position, size, size, true, createVector(0, 1, 0), initialSpeed, true,  colour);
         this.BouncedX = false;
         this.BouncedY = false;
+        console.log(colour)
     }
 
     Update(powerups, player, tiles){

@@ -1,7 +1,8 @@
 class Player extends RectangleObject{
-    constructor(position, width, height, speed, hasHitBox = true, colour = undefined){
-        super(position, width, height, hasHitBox, colour);
-        this.Speed = speed;
+    constructor(position, width, height, colour = undefined){
+        console.log(colour)
+
+        super(position, width, height, true, createVector(0, 0, 0), 0, true, colour);
         this.MousePosX = 0;
     }     
 

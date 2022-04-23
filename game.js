@@ -8,14 +8,16 @@ const CanvasHeight = 500;
 function setup(){
     //frameRate(30)
     createCanvas(CanvasWidth, CanvasHeight);
-    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true, Colours.White);
-    console.log(Colours.Red)
-    Ball = new BallObject(createVector(250, 300, 0), 15, 3);
+    
+    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, Colours.Green);
+    //console.log(Colours.Red)
+    Ball = new BallObject(createVector(250, 300, 0), 15, 3, Colours.White);
     Tiles = [];
     for(let y = 1; y <= 10; y++){
         Tiles.push([]);
         for(let x = 1; x <= 10; x ++){
-            Tiles[y-1].push(new Block(createVector(40*x + 4 + 20, 20*y), 40, 20));
+            Tiles[y-1].push(new Block(createVector(40*x + 4 + 20, 20*y), 40, 20, colour = Colours.Red));
+            //console.log(Tiles[y-1][x-1].Colour)
         }
     }
 }

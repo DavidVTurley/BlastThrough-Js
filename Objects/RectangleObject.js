@@ -1,6 +1,6 @@
 class RectangleObject extends GameObject{
-    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, Colour = undefined){
-        super(position, width, height, hasHitBox, direction, initialSpeed, visible, Colour);
+    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, colour = undefined){
+        super(position, width, height, hasHitBox, direction, initialSpeed, visible, colour);
     }
 
     Move(){

@@ -1,7 +1,7 @@
 class PowerUp extends RectangleObject{
-    constructor(position, width, height, hasHitBox = true, direction = createVector(0,1,0), initialSpeed = 1, powerUpType = "SizeUp", visible = true){
+    constructor(position, width, height, hasHitBox = true, direction = createVector(0,1,0), initialSpeed = 1, powerUpType = "SizeUp", visible = true, colour = undefined){
     
-        super(position, width, height, hasHitBox, direction, initialSpeed, visible);
+        super(position, width, height, hasHitBox, direction, initialSpeed, visible, colour);
         this.PowerUpType = powerUpType;
         this.CleanUp = false;
     }

@@ -8,7 +8,8 @@ const CanvasHeight = 500;
 function setup(){
     //frameRate(30)
     createCanvas(CanvasWidth, CanvasHeight);
-    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true);
+    PlayerPaddle = new Player(createVector(CanvasWidth / 2, CanvasHeight - 25, 0), 100, 20, 3, true, Colours.White);
+    console.log(Colours.Red)
     Ball = new BallObject(createVector(250, 300, 0), 15, 3);
     Tiles = [];
     for(let y = 1; y <= 10; y++){

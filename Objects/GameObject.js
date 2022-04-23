@@ -1,5 +1,5 @@
 class GameObject{
-    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, colour){
+    constructor(position, width, height, hasHitBox = true, direction = createVector(0,0,0), initialSpeed = 0, visible = true, colour = undefined){
         if(this.constructor === GameObject) {
             throw new Error("GameObject is an abstract class.");
         }

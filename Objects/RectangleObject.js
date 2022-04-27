@@ -43,7 +43,7 @@ class RectangleObject extends GameObject{
            // console.log("Top");
             return "Top";
         }
-        if(this.Bottom <= 0){
+        if(this.Bottom >= CanvasHeight){
             //console.log("Bottom");
             return "Bottom";
         }
@@ -63,7 +63,7 @@ class RectangleObject extends GameObject{
                 break;
             case "Bottom":
                 console.log("Bottom");
-                this.Direction = createVector(0,0,0);  
+                this.Direction = InvertVectorY(this.Direction);  
                 break;
             default:
                 break;

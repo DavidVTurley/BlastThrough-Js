@@ -17,6 +17,7 @@ class BallObject extends RectangleObject{
                 let theTile = tiles[y][x];
                 if(this.CheckCollision(theTile)){
                     if(theTile.HitBox && random(15) > 14) {
+                        // Note van Vince Mogelijk per tile asignen
                         powerups.push(PowerUp.CreatePowerUp(theTile.Position));
                     }
                     this.RespondCollisionWithTile(theTile);

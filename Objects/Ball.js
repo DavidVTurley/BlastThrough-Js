@@ -24,9 +24,9 @@ class BallObject extends RectangleObject{
                 }
             }
         } 
-    
-
-        this.RespondCollisionWitgSidesOfCanvas(this.DetectCollisionWithSideOfCanvasDirection());
+        let bounceSide = this.DetectCollisionWithSideOfCanvasDirection();
+        if(bounceSide == "Bottom") bounceSide = "";
+        this.RespondCollisionWitgSidesOfCanvas(bounceSide);
         if(this.CheckCollision(player)){
             this.Bottom = player.Top + -1;
             let newDirection = GetVectorToObject(player.Position, this.Position).normalize();
